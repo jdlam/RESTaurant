@@ -1,0 +1,13 @@
+<h2>List of Servers</h2>
+
+<div class="row">
+  <form class="" action="/admin/servers" method="get">
+    <input type="submit" value="Back To All Servers">
+  </form>
+</div>
+
+<div class="row">
+    <a class="col s4 card-panel hoverable" href="/admin/servers/<%= @server.id %>/edit">
+      <h5><%= @server.name %></h5>
+    </a>
+</div>

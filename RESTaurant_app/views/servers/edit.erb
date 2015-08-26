@@ -1,0 +1,13 @@
+
+
+<form class="center-align" action="/admin/servers/<%= @server.id %>" method="post">
+  <input type="hidden" name="_method" value="put">
+  <input type="text" class="center-align" name="server[name]" value="<%= @server.name %>" placeholder="Name?">
+  <input type="submit" value="Save Changes">
+</form>
+
+
+<form class="" action="/admin/servers/<%= @server.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" name="name" value="Delete">
+</form>

@@ -1,0 +1,49 @@
+<h2>Edit Party #<%= @party.id %></h2>
+
+<div class="row">
+<p class="col s2"></p>
+<form class="" action="/parties/<%= @party.id %>" method="post">
+  <input type="hidden" name="_method" value="put">
+  <select class="col s4" name="party[server_id]">
+    <option value="" disabled selection>Server?</option>
+    <% @servers.each do |server| %>
+      <% if server.id === @party.server.id %>
+        <option value="<%= server.id %>" selected="selected"><%= server.name %></option>
+      <% else %>
+        <option value="<%= server.id %>"><%= server.name %></option>
+      <% end %>
+    <% end %>
+  </select>
+  <select class="col s4" name="party[num_of_customers]">
+    <option value="" disabled selection>Number of Customers?</option>
+    <% customers = [1, 2, 3, 4, 5, 6] %>
+    <% customers.each do |ppl| %>
+      <% if @party.num_of_customers === ppl %>
+        <option value="<%= ppl %>" selected="selected"><%= ppl %></option>
+      <% else %>
+        <option value="<%= ppl %>"><%= ppl %></option>
+      <% end %>
+    <% end %>
+  </select>
+</div>
+<div class="row">
+  <p class="col s2"></p>
+  <input class="col s4" type="type" name="party[tab]" value="Current Tab: $<%= sprintf("%.2f", @party.tab) %>" readonly>
+  <input type="hidden" name="party[tab]" value="<%= @party.tab %>" readonly>
+  <select class="col s4" name="party[has_paid]">
+    <% if @party.has_paid %>
+      <option value="true" selected="selected">Paid</option>
+      <option value="false">Not Paid</option>
+    <% else %>
+    <option value="true">Paid</option>
+    <option value="false" selected="selected">Not Paid</option>
+    <% end %>
+  </select>
+  <br /><br /><br />
+  <input type="submit" value="Save Changes">
+</form>
+</div>
+<form class="row" action="/parties/<%= @party.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete">
+</form>

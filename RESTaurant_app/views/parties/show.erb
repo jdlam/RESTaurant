@@ -1,0 +1,31 @@
+<h2>List of Menu Items</h2>
+
+<div class="row">
+  <form class="" action="/parties" method="get">
+    <input type="submit" value="Back To All Parties">
+  </form>
+</div>
+<div class="row">
+  <form class="" action="/parties/<%= @party.id %>/edit" method="get">
+    <input type="submit" value="Edit">
+  </form>
+</div>
+
+<div class="row">
+  <p class="col s4">
+
+  </p>
+    <a class="col s4 card-panel hoverable" href="/parties/<%= @party.id %>/orders">
+      <h5><%= @party.num_of_customers %> Customers</h5>
+      <br />
+      Server: <%= @party.server.name %>
+      <br />
+      <% if @party.has_paid %>
+        Paid
+      <% else %>
+        Not Paid
+      <% end %>
+      <br />
+      Current Tab: $<%= sprintf("%.2f", @party.tab) %>
+    </a>
+</div>

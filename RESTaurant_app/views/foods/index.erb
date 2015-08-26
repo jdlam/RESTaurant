@@ -1,1 +1,32 @@
-foods list!
+<h2>List of Menu Items</h2>
+
+<div class="row">
+  <form class="" action="/admin" method="get">
+    <input type="submit" value="Back to Admin">
+  </form>
+</div>
+
+<div class="row">
+  <form class="" action="/admin/foods/new" method="get">
+    <input type="submit" value="Add Food!">
+  </form>
+</div>
+
+<div class="row">
+  <% counter = 0 %>
+  <% @foods.each do |food| %>
+
+    <a class="col s4 card-panel hoverable" href="/admin/foods/<%= food.id %>">
+      <h5><%= food.name %></h5>
+      <br />
+      <%= food.description %>
+      <br />
+      <br />
+      <%= sprintf("%.2f", food.cost) %>
+    </a>
+    <% counter += 4 %>
+    <% if counter % 12 === 0 %>
+      </div><div class="row">
+    <%end %>
+  <% end %>
+</div>

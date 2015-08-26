@@ -1,0 +1,11 @@
+a.card-panel {
+  color: black;
+}
+
+select {
+  display: block;
+}
+
+.row .col {
+  padding: 0.75rem;
+}

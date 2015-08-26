@@ -1,0 +1,18 @@
+<h2>List of Menu Items</h2>
+
+<div class="row">
+  <form class="" action="/admin/foods" method="get">
+    <input type="submit" value="Back To All Menu Items">
+  </form>
+</div>
+
+<div class="row">
+    <a class="col s4 card-panel hoverable" href="/admin/foods/<%= @food.id %>/edit">
+      <h5><%= @food.name %></h5>
+      <br />
+      <%= @food.description %>
+      <br />
+      <br />
+      <%= sprintf("%.2f", @food.cost) %>
+    </a>
+</div>

@@ -4,6 +4,7 @@ class CreateFoods < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.decimal :cost
+      t.timestamps
     end
   end
 end
