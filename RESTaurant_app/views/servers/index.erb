@@ -2,13 +2,10 @@
 
 <div class="row">
   <form class="" action="/admin" method="get">
-    <input type="submit" value="Back to Admin">
+    <input class="col s6 m2 l2 offset-s3 offset-m3 offset-l3" type="submit" value="Back to Admin">
   </form>
-</div>
-
-<div class="row">
   <form class="" action="/admin/servers/new" method="get">
-    <input type="submit" value="Add a Server">
+    <input class="col s6 m2 l2 offset-s3 offset-m2 offset-l2" type="submit" value="Add a Server">
   </form>
 </div>
 
@@ -16,7 +13,7 @@
   <% counter = 0 %>
   <% @servers.each do |server| %>
 
-    <a class="col s4 card-panel hoverable" href="/admin/servers/<%= server.id %>">
+    <a class="col s8 m4 l4 offset-s2 card-panel hoverable" href="/admin/servers/<%= server.id %>/edit">
       <h5><%= server.name %></h5>
     </a>
     <% counter += 4 %>

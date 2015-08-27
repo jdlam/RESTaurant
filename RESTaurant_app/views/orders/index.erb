@@ -1,7 +1,25 @@
-<h2>List of Menu Items</h2>
+<h2>Party #<%= @party.id %></h2>
 
 <div class="row">
-  <form class="" action="/parties/<% @party.id %>" method="get">
-    <input type="submit" value="Back to Parties">
+  <form class="" action="/parties/<%= @party.id %>" method="get">
+    <input class="col s8 offset-s2 m4 offset-m4 l4 offset-l4" type="submit" value="Back to Party Summary">
   </form>
+</div>
+
+
+<div class="row">
+  <% counter = 0 %>
+  <% @party.orders.sort_by { |obj| obj.created_at }.each do |order| %>
+    <a class="col s8 offset-s2 m4 l4 card-panel hoverable" href="/parties/orders/<%= @party.id %>/<%= order.id %>/edit">
+      <h5><%= order.food.name %></h5>
+      $<%= sprintf("%.2f", order.total_cost) %>
+      <br />
+      <%= order.notes %>
+    </a>
+    <% counter += 4 %>
+    <% if counter % 12 == 0 %>
+      </div><div class="row">
+        <% counter = 0 %>
+    <% end %>
+  <% end %>
 </div>

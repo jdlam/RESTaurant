@@ -1,5 +1,6 @@
 class WelcomeController < ApplicationController
   get '/' do
-    erb :index
+    @parties = Party.all.sort_by { |party| party.created_at }
+    erb :'parties/index'
   end
 end

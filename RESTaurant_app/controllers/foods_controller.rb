@@ -3,7 +3,7 @@ class FoodsController < ApplicationController
 
   # INDEX
   get '/' do
-    @foods = Food.all
+    @foods = Food.all.sort_by { |obj| obj.name }
     erb :'foods/index'
   end
 
@@ -34,7 +34,7 @@ class FoodsController < ApplicationController
   put '/:id' do
     food = Food.find(params[:id])
     food.update(params[:menu_item])
-    redirect "/admin/foods/#{ food.id }"
+    redirect "/admin/foods"
   end
 
   # DESTROY

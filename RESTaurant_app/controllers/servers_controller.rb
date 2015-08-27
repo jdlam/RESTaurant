@@ -14,7 +14,7 @@ class ServersController < ApplicationController
   # CREATE
   post '/' do
     server = Server.create(params[:server])
-    redirect "admin/servers/#{server.id}"
+    redirect "admin/servers"
   end
 
   # SHOW
@@ -33,7 +33,7 @@ class ServersController < ApplicationController
   put "/:id" do
     server = Server.find(params[:id])
     server.update(params[:server])
-    redirect "admin/servers/#{ server.id }"
+    redirect "admin/servers"
   end
 
   # DESTROY

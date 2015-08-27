@@ -1,0 +1,23 @@
+<h3>Kitchen</h3>
+
+<div class="row">
+  <% counter = 0 %>
+  <% @party.each do |party| %>
+    <div class="col s8 offset-s2 m6 l6 card-panel hoverable left-align list">
+      <ol>
+        <% party.orders.each do |order| %>
+          <li>
+            <%= order.food.name %>
+            <% unless order.notes == "" %>
+             <br /><span><%= order.notes %></span>
+            <% end %>
+          </li>
+        <% end %>
+      </ol>
+    </div>
+    <% counter += 6 %>
+    <% if counter % 12 == 0 %>
+  </div><div class="row">
+    <% end %>
+  <% end %>
+</div>

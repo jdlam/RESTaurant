@@ -9,3 +9,19 @@ select {
 .row .col {
   padding: 0.75rem;
 }
+
+button {
+  width: 100%;
+}
+
+input, select {
+  margin: 10px 0;
+}
+
+span {
+  font-size: 0.8em;
+}
+
+div.list {
+  font-size: 1.25em;
+}

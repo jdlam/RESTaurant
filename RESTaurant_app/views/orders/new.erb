@@ -1,0 +1,33 @@
+<h2>New Order</h2>
+
+<div class="row">
+  <form class="" action="/parties/<%= @party.id %>" method="get">
+    <input class="col s8 offset-s2 m4 offset-m4 l4 offset-l4" type="submit" value="Back to Party Summary">
+  </form>
+</div>
+
+<div class="row">
+  <% counter = 0 %>
+  <% @foods.each do |food| %>
+    <form class="" action="/parties/orders/<%= @party.id %>" method="post">
+      <input type="hidden" name="order[party_id]" value="<%= @party.id %>">
+      <input type="hidden" name="order[food_id]" value="<%= food.id %>">
+      <input type="hidden" name="order[total_cost]" value="<%= food.cost %>">
+
+      <div class="col s8 offset-s2 m4 l4 card-panel hoverable">
+        <button class="" type="submit">
+          <h5><%= food.name %></h5>
+          <br />
+          $<%= sprintf( "%.2f", food.cost) %>
+        </button>
+        <input type="text" name="order[notes]" value="" placeholder="Notes?">
+      </div>
+
+    </form>
+    <% counter += 4 %>
+    <% if counter % 12 === 0 %>
+      </div><div class="row">
+    <% end %>
+  <% end %>
+
+</div>

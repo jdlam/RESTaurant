@@ -2,7 +2,7 @@ class PartiesController < ApplicationController
 
   # INDEX
   get '/' do
-    @parties = Party.all
+    @parties = Party.all.sort_by { |party| party.created_at }
     erb :'parties/index'
   end
 
@@ -15,7 +15,7 @@ class PartiesController < ApplicationController
   # CREATE
   post '/' do
     party = Party.create(params[:party])
-    redirect "/parties/#{ party.id }"
+    redirect "/parties/orders/#{ party.id }/new"
   end
 
   # SHOW
@@ -41,6 +41,9 @@ class PartiesController < ApplicationController
   # DESTROY
   delete '/:id' do
     party = Party.find(params[:id])
+    party.orders.each do |order|
+      order.delete
+    end
     party.delete
     redirect "/parties"
   end

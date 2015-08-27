@@ -2,27 +2,27 @@
 
 <div class="row">
   <form class="" action="/admin" method="get">
-    <input type="submit" value="Back to Admin">
+    <input class="col s8 offset-s2 m2 offset-m3 l2 offset-l3 truncate" type="submit" value="Back to Admin">
+  </form>
+  <form class="" action="/admin/foods/new" method="get">
+    <input class="col s8 offset-s2 m2 offset-m2 l2 offset-l2 truncate" type="submit" value="Add Menu Item">
   </form>
 </div>
 
-<div class="row">
-  <form class="" action="/admin/foods/new" method="get">
-    <input type="submit" value="Add Food!">
-  </form>
-</div>
 
 <div class="row">
   <% counter = 0 %>
   <% @foods.each do |food| %>
 
-    <a class="col s4 card-panel hoverable" href="/admin/foods/<%= food.id %>">
+    <a class="col s8 offset-s2 m4 l4 card-panel hoverable" href="/admin/foods/<%= food.id %>/edit">
       <h5><%= food.name %></h5>
-      <br />
-      <%= food.description %>
-      <br />
-      <br />
-      <%= sprintf("%.2f", food.cost) %>
+      <span class="hide-on-small-only">
+        <br />
+        <%= food.description %>
+        <br />
+        <br />
+      </span>
+      $<%= sprintf("%.2f", food.cost) %>
     </a>
     <% counter += 4 %>
     <% if counter % 12 === 0 %>

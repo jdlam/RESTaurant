@@ -1,10 +1,9 @@
 <h2>Edit Party #<%= @party.id %></h2>
 
 <div class="row">
-<p class="col s2"></p>
 <form class="" action="/parties/<%= @party.id %>" method="post">
   <input type="hidden" name="_method" value="put">
-  <select class="col s4" name="party[server_id]">
+  <select class="col s10 offset-s1 m4 offset-m2 l4 offset-l2" name="party[server_id]">
     <option value="" disabled selection>Server?</option>
     <% @servers.each do |server| %>
       <% if server.id === @party.server.id %>
@@ -14,7 +13,7 @@
       <% end %>
     <% end %>
   </select>
-  <select class="col s4" name="party[num_of_customers]">
+  <select class="col s10 offset-s1 m4 l4" name="party[num_of_customers]">
     <option value="" disabled selection>Number of Customers?</option>
     <% customers = [1, 2, 3, 4, 5, 6] %>
     <% customers.each do |ppl| %>
@@ -27,10 +26,9 @@
   </select>
 </div>
 <div class="row">
-  <p class="col s2"></p>
-  <input class="col s4" type="type" name="party[tab]" value="Current Tab: $<%= sprintf("%.2f", @party.tab) %>" readonly>
+  <input class="col s10 offset-s1 m4 offset-m2 l4 offset-l2" type="type" name="party[tab]" value="Current Tab: $<%= sprintf("%.2f", @party.tab) %>" readonly>
   <input type="hidden" name="party[tab]" value="<%= @party.tab %>" readonly>
-  <select class="col s4" name="party[has_paid]">
+  <select class="col s10 offset-s1 m4 l4" name="party[has_paid]">
     <% if @party.has_paid %>
       <option value="true" selected="selected">Paid</option>
       <option value="false">Not Paid</option>
@@ -40,10 +38,11 @@
     <% end %>
   </select>
   <br /><br /><br />
-  <input type="submit" value="Save Changes">
+  <input class="col s8 offset-s2 m2 offset-m3 l2 offset-l3" type="submit" value="Save Changes">
+
 </form>
+  <form class="" action="/parties/<%= @party.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input class="col s8 offset-s2 m2 offset-m2 l2 offset-l2" type="submit" value="Delete">
+  </form>
 </div>
-<form class="row" action="/parties/<%= @party.id %>" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <input type="submit" value="Delete">
-</form>

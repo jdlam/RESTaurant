@@ -1,13 +1,16 @@
+<h3>Edit Server</h3>
 
+<div class="row">
 
 <form class="center-align" action="/admin/servers/<%= @server.id %>" method="post">
   <input type="hidden" name="_method" value="put">
-  <input type="text" class="center-align" name="server[name]" value="<%= @server.name %>" placeholder="Name?">
-  <input type="submit" value="Save Changes">
+  <input class="col s8 m6 l4 offset-s2 offset-m3 offset-l4 center-align" type="text" name="server[name]" value="<%= @server.name %>" placeholder="Name?">
+  <input class="col s4 m4 l2 offset-s4 offset-m4 offset-l5" type="submit" value="Save Changes">
 </form>
 
-
+</div><div class="row">
 <form class="" action="/admin/servers/<%= @server.id %>" method="post">
   <input type="hidden" name="_method" value="delete">
-  <input type="submit" name="name" value="Delete">
+  <input class="col s4 m4 l2 offset-s4 offset-m4 offset-l5" type="submit" name="name" value="Delete">
 </form>
+</div>

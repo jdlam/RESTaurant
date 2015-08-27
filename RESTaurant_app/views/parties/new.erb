@@ -1,26 +1,28 @@
 <h2>Add a New Party</h2>
 
-<form class="row" action="/parties" method="post">
-  <select class="col s6" name="party[server_id]">
+<div class="row">
+<form class="" action="/parties" method="post">
+  <select class="col s6 offset-s3" name="party[server_id]">
     <option value="" disabled selection selected="selected">Server?</option>
     <% @servers.each do |server| %>
       <option value="<%= server.id %>"><%= server.name %></option>
     <% end %>
   </select>
-  <select class="col s6" name="party[num_of_customers]">
+</div>
+<div class="row">
+  <select class="col s6 offset-s3" name="party[num_of_customers]">
     <option value="" disabled selection selected="selected">Number of Customers?</option>
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-    <option value="6">6</option>
-    <option value="7">7</option>
-    <option value="8">8</option>
-    <option value="9">9</option>
+    <% counter = 1 %>
+    <% while counter < 10 %>
+      <option value="<%= counter %>"><%= counter %></option>
+      <% counter += 1 %>
+    <% end %>
   </select>
+</div>
+<div class="row">
   <input type="hidden" name="party[tab]" value="0">
   <input type="hidden" name="party[has_paid]" value="false">
-  <br /><br /><br />
-  <input type="submit" value="Add Party">
+  <div class="row">
+  <input class="col s4 offset-s4" type="submit" value="Add Party">
+</div>
 </form>

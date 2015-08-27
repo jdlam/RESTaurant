@@ -1,31 +1,68 @@
-<h2>List of Menu Items</h2>
+<h3>Party #<%= @party.id %></h3>
+<h5>Server: <%= @party.server.name %></h5>
+<h5>
+<% if @party.has_paid %>
+  Paid
+<% else %>
+  Not Paid
+<% end %></h5>
+
+
 
 <div class="row">
-  <form class="" action="/parties" method="get">
-    <input type="submit" value="Back To All Parties">
-  </form>
+  <div class="col s6">
+    <div class="row">
+      <form class="" action="/parties/orders/<%= @party.id %>/new" method="get">
+        <input class="col s8 offset-s2" type="submit" value="New Order">
+      </form>
+    </div>
+    <div class="row">
+      <form class="" action="/parties/orders/<%= @party.id %>" method="get">
+        <input class="col s8 offset-s2" type="submit" value="Edit Orders">
+      </form>
+    </div>
+  </div>
+
+    <div class="col s6">
+      <div class="row center-align">
+        <form class="" action="/parties" method="get">
+          <input class="col s8 offset-s2" type="submit" value="Back to all Parties">
+        </form>
+      </div>
+      <div class="row center-align">
+        <form class="" action="/parties/<%= @party.id %>/edit" method="get">
+          <input class="col s8 offset-s2" type="submit" value="Edit Party">
+        </form>
+      </div>
+    </div>
 </div>
 <div class="row">
-  <form class="" action="/parties/<%= @party.id %>/edit" method="get">
-    <input type="submit" value="Edit">
-  </form>
-</div>
+  <div class="col s10 offset-s1 m6 offset-m3 l6 offset-l3">
+    <div class="divider"></div>
+    <br />
+    <% @party.orders.each do |order| %>
+      <div class="row">
+        <div class="left">
+          <%= order.food.name %>
+          <% unless order.notes == "" %>
+           <span>- <%= order.notes %></span>
+          <% end %>
+        </div>
 
-<div class="row">
-  <p class="col s4">
-
-  </p>
-    <a class="col s4 card-panel hoverable" href="/parties/<%= @party.id %>/orders">
-      <h5><%= @party.num_of_customers %> Customers</h5>
-      <br />
-      Server: <%= @party.server.name %>
-      <br />
-      <% if @party.has_paid %>
-        Paid
-      <% else %>
-        Not Paid
-      <% end %>
-      <br />
-      Current Tab: $<%= sprintf("%.2f", @party.tab) %>
-    </a>
+        <div class="right">
+          <%= sprintf("%.2f", order.food.cost) %>
+        </div>
+      </div>
+    <% end %>
+    <div class="divider"></div>
+    <br />
+    <div class="row">
+      <div class="left">
+        Total
+      </div>
+      <div class="right">
+        $<%= sprintf("%.2f", @party.tab) %>
+      </div>
+    </div>
+  </div>
 </div>
