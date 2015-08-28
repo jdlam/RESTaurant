@@ -1,40 +1,27 @@
 <h3>Party #<%= @party.id %></h3>
 <h5>Server: <%= @party.server.name %></h5>
-<h5>
-<% if @party.has_paid %>
-  Paid
-<% else %>
-  Not Paid
-<% end %></h5>
-
 
 
 <div class="row">
-  <div class="col s6">
-    <div class="row">
-      <form class="" action="/parties/orders/<%= @party.id %>/new" method="get">
-        <input class="col s8 offset-s2" type="submit" value="New Order">
-      </form>
-    </div>
-    <div class="row">
-      <form class="" action="/parties/orders/<%= @party.id %>" method="get">
-        <input class="col s8 offset-s2" type="submit" value="Edit Orders">
-      </form>
-    </div>
-  </div>
-
-    <div class="col s6">
-      <div class="row center-align">
-        <form class="" action="/parties" method="get">
-          <input class="col s8 offset-s2" type="submit" value="Back to all Parties">
-        </form>
-      </div>
-      <div class="row center-align">
-        <form class="" action="/parties/<%= @party.id %>/edit" method="get">
-          <input class="col s8 offset-s2" type="submit" value="Edit Party">
-        </form>
-      </div>
-    </div>
+    <form class="" action="<%= @party.id %>/receipt" method="get">
+      <input class="col s8 offset-s2 m4 offset-m4" type="submit" name="name" value="Receipt">
+    </form>
+</div>
+<div class="row">
+  <form class="" action="/orders/<%= @party.id %>/new" method="get">
+    <input class="col s8 offset-s2 m4 offset-m1 l4 offset-l1" type="submit" value="New Order">
+  </form>
+  <form class="" action="/orders/<%= @party.id %>" method="get">
+    <input class="col s8 offset-s2 m4 offset-m2 l4 offset-l2" type="submit" value="Edit Orders">
+  </form>
+</div>
+<div class="row">
+  <form class="" action="/" method="get">
+    <input class="col s8 offset-s2 m4 offset-m1 l4 offset-l1" type="submit" value="Back to all Parties">
+  </form>
+  <form class="" action="/<%= @party.id %>/edit" method="get">
+    <input class="col s8 offset-s2 m4 offset-m2 l4 offset-l2" type="submit" value="Edit Party">
+  </form>
 </div>
 <div class="row">
   <div class="col s10 offset-s1 m6 offset-m3 l6 offset-l3">
@@ -48,12 +35,12 @@
            <span>- <%= order.notes %></span>
           <% end %>
         </div>
-
         <div class="right">
           <%= sprintf("%.2f", order.food.cost) %>
         </div>
       </div>
     <% end %>
+    <br />
     <div class="divider"></div>
     <br />
     <div class="row">

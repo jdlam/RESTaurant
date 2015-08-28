@@ -6,6 +6,11 @@ class PartiesController < ApplicationController
     erb :'parties/index'
   end
 
+  get '/receipts' do
+    @parties = Party.all.sort_by { |party| party.created_at }
+    erb :'receipts/index'
+  end
+
   # NEW
   get '/new' do
     @servers = Server.all
@@ -15,13 +20,18 @@ class PartiesController < ApplicationController
   # CREATE
   post '/' do
     party = Party.create(params[:party])
-    redirect "/parties/orders/#{ party.id }/new"
+    redirect "/orders/#{ party.id }/new"
   end
 
   # SHOW
   get '/:id' do
     @party = Party.find(params[:id])
     erb :'parties/show'
+  end
+
+  get '/:id/receipt' do
+    @party = Party.find(params[:id])
+    erb :'receipts/show'
   end
 
   # EDIT
@@ -35,7 +45,7 @@ class PartiesController < ApplicationController
   put '/:id' do
     party = Party.find(params[:id])
     party.update(params[:party])
-    redirect "/parties/#{party.id}"
+    redirect "/#{party.id}"
   end
 
   # DESTROY
@@ -45,7 +55,7 @@ class PartiesController < ApplicationController
       order.delete
     end
     party.delete
-    redirect "/parties"
+    redirect "/"
   end
 
 end

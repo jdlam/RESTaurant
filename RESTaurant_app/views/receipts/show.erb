@@ -1,0 +1,66 @@
+<% tip15 = @party.tab*15/100 %>
+<% tip20 = @party.tab*20/100 %>
+<% tip25 = @party.tab*25/100 %>
+<% if @party.num_of_customers >= 6 %>
+  <% @finaltab = @party.tab + tip20 %>
+<% else %>
+  <% @finaltab = @party.tab %>
+<% end %>
+<div class="row">
+  <div class="col s10 offset-s1 m6 offset-m3 l6 offset-l3">
+    <h4>Party #<%= @party.id %></h4>
+    Server: <%= @party.server.name %>
+    <div class="divider"></div>
+    <% @party.orders.each do |order| %>
+      <div class="row">
+        <div class="left">
+          <%= order.food.name %>
+          <% unless order.notes == "" %>
+           <span>- <%= order.notes %></span>
+          <% end %>
+        </div>
+        <div class="right">
+          <%= sprintf("%.2f", order.food.cost) %>
+        </div>
+      </div>
+    <% end %>
+    <% if @party.num_of_customers >= 6 %>
+      <div class="row">
+        <div class="left">
+          20% Tip Included
+        </div>
+        <div class="right">
+          $<%= sprintf("%.2f", tip20) %>
+        </div>
+      </div>
+    <% end %>
+    <div class="divider"></div>
+    <div class="row">
+      <div class="left">
+        Total
+      </div>
+      <div class="right">
+        $<%= sprintf("%.2f", @finaltab) %>
+      </div>
+    </div>
+    <% unless @party.num_of_customers >= 6 %>
+    <div class="divider"></div>
+      <div class="row">
+        <div class="center-align">
+          Gratuity is Encouraged
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s4">
+          15%: $<%= sprintf("%.2f", tip15) %>
+        </div>
+        <div class="col s4">
+          20%: $<%= sprintf("%.2f", tip20) %>
+        </div>
+        <div class="col s4">
+          25%: $<%= sprintf("%.2f", tip25) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -19,10 +19,9 @@ require './controllers/servers_controller'
 require './controllers/kitchen_controller'
 
 # ROUTING
-map('/'){ run WelcomeController }
+map('/'){ run PartiesController }
+map('/orders'){ run OrdersController }
 map('/admin'){ run AdminsController }
 map('/admin/foods'){ run FoodsController }
 map('/admin/servers'){ run ServersController }
-map('/parties'){ run PartiesController }
-map('/parties/orders'){ run OrdersController }
 map('/kitchen'){ run KitchensController }

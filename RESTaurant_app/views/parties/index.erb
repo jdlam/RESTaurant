@@ -1,7 +1,7 @@
-<h2>List of Parties</h2>
+<h3>List of Parties</h3>
 
 <div class="row">
-  <form class="" action="/parties/new" method="get">
+  <form class="" action="/new" method="get">
     <input class="col s8 offset-s2 m2 offset-m5 l2 offset-l5" type="submit" value="Add A Party">
   </form>
 </div>
@@ -10,7 +10,7 @@
   <% counter = 0 %>
   <% @parties.each do |party| %>
 
-    <a class="col s6 offset-s3 m4 l4 card-panel hoverable" href="/parties/<%= party.id %>">
+    <a class="col s6 offset-s3 m4 l4 card-panel hoverable" href="/<%= party.id %>">
       <h5>Party #<%= party.id %></h5>
       Server: <%= party.server.name %>
       <br />

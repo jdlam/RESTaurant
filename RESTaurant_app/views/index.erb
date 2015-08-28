@@ -1,13 +1,32 @@
-<h1>RESTaurant</h1>
+<h3>List of Parties</h3>
 
 <div class="row">
-  <a class="col s12 card-panel" href="/parties">
-    <h3>Tables</h3>
-  </a>
+  <form class="" action="/parties/new" method="get">
+    <input class="col s8 offset-s2 m2 offset-m5 l2 offset-l5" type="submit" value="Add A Party">
+  </form>
 </div>
 
 <div class="row">
-  <a class="col s12 card-panel" href="/parties/new">
-    <h3>Add a Table</h3>
-  </a>
+  <% counter = 0 %>
+  <% @parties.each do |party| %>
+
+    <a class="col s6 offset-s3 m4 l4 card-panel hoverable" href="/parties/<%= party.id %>">
+      <h5>Party #<%= party.id %></h5>
+      Server: <%= party.server.name %>
+      <br />
+      <%= party.num_of_customers %> Customers
+      <br />
+      <% if party.has_paid %>
+        Paid
+      <% else %>
+        Not paid
+      <% end %>
+      <br />
+      $<%= sprintf("%.2f", party.tab) %>
+    </a>
+    <% counter += 4 %>
+    <% if counter % 12 === 0 %>
+      </div><div class="row">
+    <%end %>
+  <% end %>
 </div>

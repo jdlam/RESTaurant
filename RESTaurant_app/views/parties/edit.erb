@@ -1,7 +1,7 @@
-<h2>Edit Party #<%= @party.id %></h2>
+<h3>Edit Party #<%= @party.id %></h3>
 
 <div class="row">
-<form class="" action="/parties/<%= @party.id %>" method="post">
+<form class="" action="/<%= @party.id %>" method="post">
   <input type="hidden" name="_method" value="put">
   <select class="col s10 offset-s1 m4 offset-m2 l4 offset-l2" name="party[server_id]">
     <option value="" disabled selection>Server?</option>
@@ -41,7 +41,7 @@
   <input class="col s8 offset-s2 m2 offset-m3 l2 offset-l3" type="submit" value="Save Changes">
 
 </form>
-  <form class="" action="/parties/<%= @party.id %>" method="post">
+  <form class="" action="/<%= @party.id %>" method="post">
     <input type="hidden" name="_method" value="delete">
     <input class="col s8 offset-s2 m2 offset-m2 l2 offset-l2" type="submit" value="Delete">
   </form>

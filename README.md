@@ -21,13 +21,15 @@ Chefs can alert servers that their food is ready
   - ~~Admin~~
   - ~~Servers~~
   - ~~Foods~~
-  - Parties
-  - Orders
-  - Chef
-- Finish Orders
-- Chef's page
+  - ~~Parties~~
+  - ~~Orders~~
+  - ~~Chef~~
+- ~~Finish Orders~~
+- ~~Chef's page~~
 - When the table leaves, the party disappears, but is still in database
-  - Make a new table full of paid Orders
+  - Make a new table called Paid_Orders full of paid Orders
+  - Create an entry in Paid_Orders with info from an Order
+  - Delete an Order
 - When chef gets orders, the order is in a single list
 - Changes colors when time passes a certain limit
 - Chef can press the button when the order is complete

@@ -1,9 +1,19 @@
 a.card-panel {
   color: black;
 }
+.red {
+  background-color: red;
+}
+.green {
+  background-color: green;
+}
 
 select {
   display: block;
+}
+
+header {
+  height: 100px;
 }
 
 .row .col {
@@ -24,4 +34,21 @@ span {
 
 div.list {
   font-size: 1.25em;
+}
+
+h3 {
+  margin: 40px 0;
+}
+
+div.row {
+  margin-bottom: 0;
+}
+
+div.divider {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+section.bigger {
+  font-size: 2em;
 }

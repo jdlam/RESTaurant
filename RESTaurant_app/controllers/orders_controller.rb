@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
     order.update({total_cost: order.food.cost})
     # update the party's tab
     @party.update(tab: (@party.tab + order.total_cost))
-    redirect "/parties/orders/#{ @party.id }/new"
+    redirect "/orders/#{ @party.id }/new"
   end
 
   # SHOW
@@ -43,14 +43,14 @@ class OrdersController < ApplicationController
     order.update(params[:order])
     # Update the party's tab with the new updated order
     @party.update(tab: (@party.tab + order.total_cost))
-    redirect "/parties/orders/#{ @party.id }"
+    redirect "/orders/#{ @party.id }"
   end
 
   # DESTROY
   delete '/:partyid/:orderid' do
     @party = Party.find(params[:partyid])
     order = Order.find(params[:orderid]).delete
-    redirect "/parties/orders/#{ @party.id }"
+    redirect "/orders/#{ @party.id }"
   end
 
 end
