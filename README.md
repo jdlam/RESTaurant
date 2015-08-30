@@ -32,6 +32,12 @@ This app was meant to be used on mobiles for servers and tablets for the kitchen
 
 The front end incorporates HTML, JavaScript, CSS, and Materialize, both the CSS and the JS. The back end is made from a combination of PostGreSQL and Ruby, using gems such as Sinatra and ActiveRecord to keep the page dynamic.
 
+### Plans for the Future
+
+- Get the formChecker.js to work so users can't submit incomplete forms and break the app
+- Figure out why I get this 403 error from cdnjs. Check the console for almost every page. This error keeps popping up...
+- Find a way to edit/delete multiple entries at once.
+
 ### Notes
 Author: Jonathan Lam
 Last Updated: 8/30/2015
