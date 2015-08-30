@@ -2,27 +2,34 @@
 
 <div class="row">
 <form class="" action="/" method="post">
-  <select class="col s6 offset-s3" name="party[server_id]">
+  <select class="col s6 offset-s3 m4 offset-m4" name="party[server_id]">
     <option value="" disabled selection selected="selected">Server?</option>
     <% @servers.each do |server| %>
       <option value="<%= server.id %>"><%= server.name %></option>
     <% end %>
   </select>
-</div>
-<div class="row">
-  <select class="col s6 offset-s3" name="party[num_of_customers]">
+  <select class="col s6 offset-s3 m4 offset-m4" name="party[num_of_customers]">
     <option value="" disabled selection selected="selected">Number of Customers?</option>
-    <% counter = 1 %>
-    <% while counter < 10 %>
-      <option value="<%= counter %>"><%= counter %></option>
-      <% counter += 1 %>
+    <% customerCounter = 1 %>
+    <% while customerCounter < 10 %>
+      <option value="<%= customerCounter %>"><%= customerCounter %> Customers</option>
+      <% customerCounter += 1 %>
+    <% end %>
+  </select>
+  <select class="col s6 offset-s3 m4 offset-m4" name="party[table_id]">
+    <option value="" disabled selection selected="selected">Which Table?</option>
+    <% tableCounter = 1 %>
+    <% while tableCounter < 10 %>
+      <option value="<%= tableCounter %>">Table #<%= tableCounter %></option>
+      <% tableCounter += 1 %>
     <% end %>
   </select>
 </div>
 <div class="row">
   <input type="hidden" name="party[tab]" value="0">
   <input type="hidden" name="party[has_paid]" value="false">
+  <input type="hidden" name="party[food_ready]" value="false">
   <div class="row">
-  <input class="col s4 offset-s4" type="submit" value="Add Party">
+  <input class="col s4 offset-s4 m2 offset-m5" type="submit" value="Add Party">
 </div>
 </form>

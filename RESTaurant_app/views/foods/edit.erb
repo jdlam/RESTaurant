@@ -3,10 +3,22 @@
 <div class="row">
     <form action="/admin/foods/<%= @food.id %>" method="post">
       <input type="hidden" name="_method" value="put">
-      <input class="col s8 offset-s2 m6 offset-m3 l6 offset-l3 center-align" type="text" class="center-align" name="menu_item[name]" value="<%= @food.name %>" placeholder="Item Name?">
-      <input class="col s8 offset-s2 m6 offset-m3 l6 offset-l3 center-align" type="text" class="center-align" name="menu_item[description]" value="<%= @food.description %>" placeholder="Description?">
-      <input class="col s8 offset-s2 m6 offset-m3 l6 offset-l3 center-align" type="text" class="center-align" name="menu_item[cost]" value="<%= @food.cost.round(2) %>" placeholder="Cost">
-      <input class="col s6 offset-s3 m4 offset-m4 l4 offset-l4 center-align" type="submit" value="Save Changes">
+      <div class="input-field col s8 offset-s2 m6 offset-m3 l4 offset-l4">
+        <select name="menu_item[category_id]">
+          <option value="" disabled selection>What Category?</option>
+          <% @categories.each do |category| %>
+            <% if category.name == @food.category.name %>
+            <option value="<%= category.id %>" selected><%= category.name %></option>
+            <% else %>
+            <option value="<%= category.id %>"><%= category.name %></option>
+            <% end %>
+          <% end %>
+        </select>
+      </div>
+      <input class="col s8 offset-s2 m6 offset-m3 l4 offset-l4 " type="text" class="" name="menu_item[name]" value="<%= @food.name %>" placeholder="Item Name?">
+      <input class="col s8 offset-s2 m6 offset-m3 l4 offset-l4 " type="text" class="" name="menu_item[description]" value="<%= @food.description %>" placeholder="Description?">
+      <input class="col s8 offset-s2 m6 offset-m3 l4 offset-l4 " type="text" class="" name="menu_item[cost]" value="<%= @food.cost.round(2) %>" placeholder="Cost">
+      <input class="col s6 offset-s3 m4 offset-m4 l2 offset-l5 " type="submit" value="Save Changes">
     </form>
 </div>
 
@@ -14,6 +26,6 @@
 <div class="row">
   <form class="" action="/admin/foods/<%= @food.id %>" method="post">
     <input type="hidden" name="_method" value="delete">
-    <input class="col s6 offset-s3 m4 offset-m4 l4 offset-l4 center-align" type="submit" name="name" value="Delete">
+    <input class="col s6 offset-s3 m4 offset-m4 l2 offset-l5 " type="submit" name="name" value="Delete">
   </form>
 </div>

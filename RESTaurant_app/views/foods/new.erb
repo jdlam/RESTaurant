@@ -1,10 +1,19 @@
 <h3>Add a New Menu Item</h3>
 
 <div class="row">
-  <form class="center-align" action="/admin/foods/" method="post">
-    <input class="col s8 offset-s2 m6 offset-m3 l4 offset-l4 center-align" type="text" name="menu_item[name]" placeholder="Item Name?">
-    <input class="col s8 offset-s2 m6 offset-m3 l4 offset-l4 center-align" type="text" name="menu_item[description]" placeholder="Description?">
-    <input class="col s8 offset-s2 m6 offset-m3 l4 offset-l4 center-align" type="text" name="menu_item[cost]" placeholder="Cost">
+  <form class="" action="/admin/foods/" method="post">
+    <div class="input-field col s8 offset-s2 m6 offset-m3 l4 offset-l4">
+      <select class="" name="menu_item[category_id]">
+        <option value="" disabled selection selected="selected">What Category?</option>
+        <% @categories.each do |category| %>
+          <option value="<%= category.id %>"><%= category.name %></option>
+        <% end %>
+      </select>
+    </div>
+
+    <input class="col s8 offset-s2 m6 offset-m3 l4 offset-l4" type="text" name="menu_item[name]" placeholder="Item Name?">
+    <input class="col s8 offset-s2 m6 offset-m3 l4 offset-l4" type="text" name="menu_item[description]" placeholder="Description?">
+    <input class="col s8 offset-s2 m6 offset-m3 l4 offset-l4" type="text" name="menu_item[cost]" placeholder="Cost">
     <input class="col s6 offset-s3 m4 offset-m4 l2 offset-l5" type="submit" value="Add To Menu!">
   </form>
 </div>

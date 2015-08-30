@@ -3,12 +3,13 @@ class FoodsController < ApplicationController
 
   # INDEX
   get '/' do
-    @foods = Food.all.sort_by { |obj| obj.name }
+    @foods = Food.all.sort_by { |obj| obj.category.name }
     erb :'foods/index'
   end
 
   # NEW
   get '/new' do
+    @categories = Category.all.sort_by { |category| category.name }
     erb :'foods/new'
   end
 
@@ -27,6 +28,7 @@ class FoodsController < ApplicationController
   # EDIT
   get '/:id/edit' do
     @food = Food.find(params[:id])
+    @categories = Category.all.sort_by { |obj| obj.name}
     erb :'foods/edit'
   end
 
@@ -39,7 +41,9 @@ class FoodsController < ApplicationController
 
   # DESTROY
   delete '/:id' do
-    food = Food.find(params[:id]).delete
+    food = Food.find(params[:id])
+    food.orders.delete
+    food.delete
     redirect '/admin/foods'
   end
 

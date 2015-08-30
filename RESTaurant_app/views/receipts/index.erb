@@ -1,0 +1,9 @@
+<h3>Receipts</h3>
+
+<% @receipts.each do |receipt| %>
+  <div class="col s8 offset-s2 m4 l4 card-panel hoverable">
+    <%= receipt.party_id %>
+    <%= receipt.tab %>
+    <%= receipt.created_at %>
+  </div>
+<% end %>

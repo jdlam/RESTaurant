@@ -1,36 +1,44 @@
-<script src="/js/scripts.js" charset="utf-8"></script>
-
+<script src="/js/timer.js" charset="utf-8"></script>
+<script type="text/javascript">
+  setTimeout("location.reload(true);",10000);
+</script>
 <h3>Kitchen</h3>
 
 <div class="row">
   <% counter = 0 %>
   <% @party.each do |party| %>
-    <div class="col s10 offset-s1 m6 l6 card-panel hoverable left-align list">
-      <span class="timer">
-        <%= Time.now - party.created_at.localtime %>
-      </span>
-      <div class="row valign-wrapper">
-        <section class="col l6 valign bigger">Party #<%= party.id %></section>
-        <form class="col l6 right-align valign" action="" method="post">
-          <input type="submit" name="name" value="Ready for Pickup!">
-        </form>
-      </div>
-      <div class="divider"></div>
-      <ol>
-        <% party.orders.each do |order| %>
-          <li>
-            <%= order.food.name %>
-            <% unless order.notes == "" %>
-             <br /><span><%= order.notes %></span>
+    <% unless party.food_ready %>
+      <div class="col s10 offset-s1 m6 l6 card-panel hoverable left-align list">
+
+        <div class="row valign-wrapper">
+          <section class="col l6 valign bigger">Party #<%= party.id %></section>
+          <form class="col l6 right-align valign" action="" method="post">
+            <input type="hidden" name="id" value="<%= party.id %>">
+            <input type="submit" name="name" value="Ready for Pickup!">
+          </form>
+        </div>
+        <div class="divider"></div>
+        <ol>
+          <% party.orders.each_with_index do |order, index| %>
+            <li>
+              <%= order.food.name %>
+              <% unless order.notes == "" %>
+               <br /><span><%= order.notes %></span>
+              <% end %>
+            </li>
+            <% if index == party.orders.size-1 %>
+              <span class="timer">
+                <%= Time.now - order.created_at.localtime %>
+              </span>
             <% end %>
-          </li>
-        <% end %>
-      </ol>
-      <div class="divider"></div>
-    </div>
-    <% counter += 6 %>
-    <% if counter % 12 == 0 %>
-  </div><div class="row">
+          <% end %>
+        </ol>
+        <div class="divider"></div>
+      </div>
+      <% counter += 6 %>
+      <% if counter % 12 == 0 %>
+    </div><div class="row">
+      <% end %>
     <% end %>
   <% end %>
 </div>

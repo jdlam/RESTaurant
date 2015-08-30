@@ -3,24 +3,24 @@
 
 
 <div class="row">
-    <form class="" action="<%= @party.id %>/receipt" method="get">
-      <input class="col s8 offset-s2 m4 offset-m4" type="submit" name="name" value="Receipt">
+    <form class="" action="receipts/<%= @party.id %>" method="get">
+      <input class="col s8 offset-s2 m4 offset-m4" type="submit" value="Receipt">
     </form>
 </div>
 <div class="row">
   <form class="" action="/orders/<%= @party.id %>/new" method="get">
-    <input class="col s8 offset-s2 m4 offset-m1 l4 offset-l1" type="submit" value="New Order">
+    <input class="col s4 offset-s1 m4 offset-m1 l4 offset-l1 truncate" type="submit" value="New Order">
   </form>
-  <form class="" action="/orders/<%= @party.id %>" method="get">
-    <input class="col s8 offset-s2 m4 offset-m2 l4 offset-l2" type="submit" value="Edit Orders">
+  <form class="" action="/" method="get">
+    <input class="col s4 offset-s2 m4 offset-m2 l4 offset-l2 truncate" type="submit" value="Back to Parties">
   </form>
 </div>
 <div class="row">
-  <form class="" action="/" method="get">
-    <input class="col s8 offset-s2 m4 offset-m1 l4 offset-l1" type="submit" value="Back to all Parties">
+  <form class="" action="/orders/<%= @party.id %>" method="get">
+    <input class="col s4 offset-s1 m4 offset-m1 l4 offset-l1 truncate" type="submit" value="Edit Orders">
   </form>
   <form class="" action="/<%= @party.id %>/edit" method="get">
-    <input class="col s8 offset-s2 m4 offset-m2 l4 offset-l2" type="submit" value="Edit Party">
+    <input class="col s4 offset-s2 m4 offset-m2 l4 offset-l2 truncate" type="submit" value="Edit Party">
   </form>
 </div>
 <div class="row">

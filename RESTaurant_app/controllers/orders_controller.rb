@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
   # NEW
   get '/:partyid/new' do
     @party = Party.find(params[:partyid])
+    @categories = Category.all.sort_by { |cat| cat.name }
     @foods = Food.all
     erb :'orders/new'
   end

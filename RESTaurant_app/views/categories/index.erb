@@ -1,0 +1,25 @@
+<h3>List of Categories</h3>
+
+<div class="row">
+  <form class="" action="/admin" method="get">
+    <input class="col s8 offset-s2 m2 offset-m3 l2 offset-l3 truncate" type="submit" value="Back to Admin">
+  </form>
+  <form class="" action="/admin/categories/new" method="get">
+    <input class="col s8 offset-s2 m2 offset-m2 l2 offset-l2 truncate" type="submit" value="Add Category">
+  </form>
+</div>
+
+
+<div class="row">
+  <% counter = 0 %>
+  <% @categories.each do |category| %>
+
+    <a class="col s8 offset-s2 m4 l4 card-panel hoverable" href="/admin/categories/<%= category.id %>/edit">
+      <h5><%= category.name %></h5>
+    </a>
+    <% counter += 4 %>
+    <% if counter % 12 === 0 %>
+      </div><div class="row">
+    <%end %>
+  <% end %>
+</div>

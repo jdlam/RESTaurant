@@ -1,5 +1,5 @@
 class ServersController < ApplicationController
-
+  require 'pry'
   # INDEX
   get '/' do
     @servers = Server.all
@@ -39,6 +39,12 @@ class ServersController < ApplicationController
   # DESTROY
   delete "/:id" do
     server = Server.find(params[:id])
+    server.orders.each do |order|
+      order.delete
+    end
+    server.parties.each do |party|
+      party.delete
+    end
     server.delete
     redirect "admin/servers"
   end

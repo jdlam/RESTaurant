@@ -3,7 +3,7 @@
 <div class="row">
 <form class="" action="/<%= @party.id %>" method="post">
   <input type="hidden" name="_method" value="put">
-  <select class="col s10 offset-s1 m4 offset-m2 l4 offset-l2" name="party[server_id]">
+  <select class="col s10 offset-s1 m4 offset-m4" name="party[server_id]">
     <option value="" disabled selection>Server?</option>
     <% @servers.each do |server| %>
       <% if server.id === @party.server.id %>
@@ -13,30 +13,42 @@
       <% end %>
     <% end %>
   </select>
-  <select class="col s10 offset-s1 m4 l4" name="party[num_of_customers]">
+  <select class="col s10 offset-s1 m4 offset-m4" name="party[table_id]">
+    <option value="" disables delection>Table Number?</option>
+    <% tables = [1, 2, 3, 4, 5, 6, 7, 8, 9] %>
+    <% tables.each do |table| %>
+      <% if @party.table_id == table %>
+        <option value="<%= table %>" selected="selected">Table #<%= table %></option>
+      <% else %>
+        <option value="<%= table %>">Table #<%= table %></option>
+      <% end %>
+    <% end %>
+  </select>
+  <select class="col s10 offset-s1 m4 offset-m4" name="party[num_of_customers]">
     <option value="" disabled selection>Number of Customers?</option>
-    <% customers = [1, 2, 3, 4, 5, 6] %>
+    <% customers = [1, 2, 3, 4, 5, 6, 7, 8, 9] %>
     <% customers.each do |ppl| %>
       <% if @party.num_of_customers === ppl %>
-        <option value="<%= ppl %>" selected="selected"><%= ppl %></option>
+        <option value="<%= ppl %>" selected="selected"><%= ppl %> Customers</option>
       <% else %>
-        <option value="<%= ppl %>"><%= ppl %></option>
+        <option value="<%= ppl %>"><%= ppl %> Customers</option>
       <% end %>
     <% end %>
   </select>
 </div>
 <div class="row">
-  <input class="col s10 offset-s1 m4 offset-m2 l4 offset-l2" type="type" name="party[tab]" value="Current Tab: $<%= sprintf("%.2f", @party.tab) %>" readonly>
+  <input class="col s10 offset-s1 m4 offset-m4" type="type" name="party[tab]" value="Current Tab: $<%= sprintf("%.2f", @party.tab) %>" readonly>
   <input type="hidden" name="party[tab]" value="<%= @party.tab %>" readonly>
-  <select class="col s10 offset-s1 m4 l4" name="party[has_paid]">
-    <% if @party.has_paid %>
-      <option value="true" selected="selected">Paid</option>
-      <option value="false">Not Paid</option>
-    <% else %>
-    <option value="true">Paid</option>
-    <option value="false" selected="selected">Not Paid</option>
-    <% end %>
-  </select>
+
+  <% if @party.has_paid %>
+    <% @paid = "Not Paid" %>
+  <% else %>
+    <% @paid = "Paid" %>
+  <% end %>
+
+  <input class="col s10 offset-s1 m4 offset-m4" type="type" name="party[has_paid]" value="<%= @paid %>" readonly>
+  <input type="hidden" name="party[has_paid]" value="<%= @party.has_paid %>" readonly>
+
   <br /><br /><br />
   <input class="col s8 offset-s2 m2 offset-m3 l2 offset-l3" type="submit" value="Save Changes">
 

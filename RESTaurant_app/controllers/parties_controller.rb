@@ -2,13 +2,13 @@ class PartiesController < ApplicationController
 
   # INDEX
   get '/' do
-    @parties = Party.all.sort_by { |party| party.created_at }
+    @parties = Party.all.sort_by { |party| party.table_id }
     erb :'parties/index'
   end
 
-  get '/receipts' do
-    @parties = Party.all.sort_by { |party| party.created_at }
-    erb :'receipts/index'
+  get '/all' do
+    @parties = Party.all.sort_by { |party| party.table_id }
+    erb :'parties/indexAll'
   end
 
   # NEW
@@ -27,11 +27,6 @@ class PartiesController < ApplicationController
   get '/:id' do
     @party = Party.find(params[:id])
     erb :'parties/show'
-  end
-
-  get '/:id/receipt' do
-    @party = Party.find(params[:id])
-    erb :'receipts/show'
   end
 
   # EDIT

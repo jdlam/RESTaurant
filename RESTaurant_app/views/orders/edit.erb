@@ -4,7 +4,7 @@
   <form class="" action="/orders/<%= @party.id %>/<%= @order.id %>" method="post">
     <input type="hidden" name="_method" value="put">
     <input type="hidden" name="order[party_id]" value="<%= @party.id %>">
-    <select class="col s8 offset-s2 m4 offset-m4 l4 offset-l4" name="order[food_id]">
+    <select class="input-field col s8 offset-s2 m4 offset-m4 l4 offset-l4" name="order[food_id]">
       <% @foods.each do |food| %>
         <% if food.id === @order.food.id %>
           <option value="<%= food.id %>" selected="selected"><%= food.name %></option>
@@ -16,8 +16,8 @@
 </div>
 <div class="row">
     <input class="col s8 offset-s2 m4 offset-m4 l4 offset-l4" type="text" name="order[notes]" value="<%= @order.notes %>" placeholder="Notes for the Chef">
-  </div>
-  <div class="row">
+</div>
+<div class="row">
       <input class="col s8 offset-s2 m2 offset-m3 l2 offset-l3" type="submit" value="Save">
   </form>
   <form class="" action="/orders/<%= @party.id %>/<%= @order.id %>" method="post">

@@ -12,21 +12,19 @@
 
 <div class="row">
   <% counter = 0 %>
-  <% @foods.each do |food| %>
-
-    <a class="col s8 offset-s2 m4 l4 card-panel hoverable" href="/admin/foods/<%= food.id %>/edit">
-      <h5><%= food.name %></h5>
-      <span class="hide-on-small-only">
-        <br />
-        <%= food.description %>
-        <br />
-        <br />
-      </span>
-      $<%= sprintf("%.2f", food.cost) %>
-    </a>
-    <% counter += 4 %>
-    <% if counter % 12 === 0 %>
-      </div><div class="row">
-    <%end %>
-  <% end %>
+    <% @foods.each do |food| %>
+      <a class="col s8 offset-s2 m4 l4 card-panel hoverable" href="/admin/foods/<%= food.id %>/edit">
+        <h5><%= food.name %></h5>
+        <h6>Category: <%= food.category.name %></h6>
+        <span class="hide-on-small-only">
+          "<%= food.description %>"
+          <br />
+        </span>
+        $<%= sprintf("%.2f", food.cost) %>
+      </a>
+      <% counter += 4 %>
+      <% if counter % 12 === 0 %>
+        </div><div class="row">
+      <% end %>
+    <% end %>
 </div>
