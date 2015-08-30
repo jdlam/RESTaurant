@@ -10,6 +10,17 @@
     <script src="/js/scripts.js" charset="utf-8"></script>
   </head>
   <body>
+    <nav class="blue-grey lighten-4">
+      <ul class="right hide-on-med-and-down">
+        <li><a href="/">Servers</a></li>
+        <li><a href="/kitchen">Kitchen</a></li>
+      </ul>
+      <ul id="slide-out" class="side-nav">
+        <li><a href="/">Servers</a></li>
+        <li><a href="/kitchen">Kitchen</a></li>
+      </ul>
+      <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+    </nav>
     <div class="container center-align">
       <%= yield %>
     </div>
