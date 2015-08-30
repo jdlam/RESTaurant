@@ -67,12 +67,6 @@ input {
   border-radius:0;
 }
 
-button {
-  -webkit-appearance: none;
-  -webkit-border-radius:0;
-  border-radius:0;
-}
-
 div.row {
   margin-bottom: 0;
 }
