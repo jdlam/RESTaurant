@@ -61,6 +61,11 @@ h3 {
   margin: 40px 0;
 }
 
+input {
+    -webkit-border-radius:0;
+    border-radius:0;
+}
+
 div.row {
   margin-bottom: 0;
 }
