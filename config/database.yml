@@ -1,3 +1,7 @@
 development:
   adapter: postgresql
   database: restaurant_app_db
+
+production:
+  adapter: postgresql
+  database: restaurant_app_db
