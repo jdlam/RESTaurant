@@ -1,9 +1,9 @@
-$(document).ready(function() {
-  validateSelect();
-  $('select').change(validateSelect);
-});
+$(document).ready(function(){
+  validate();
+  $('input').change(validate);
+})
 
-function validateSelect() {
+function validate() {
   var checker = 0;
   var $select = $('select');
   for (var i=0; i<$select.length; i++) {

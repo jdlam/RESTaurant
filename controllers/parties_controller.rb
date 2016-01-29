@@ -25,8 +25,12 @@ class PartiesController < ApplicationController
 
   # SHOW
   get '/:id' do
-    @party = Party.find(params[:id])
-    erb :'parties/show'
+    unless params[:id] == 'favicon.ico'
+      @party = Party.find(params[:id])
+      erb :'parties/show'
+    else
+      redirect "/"
+    end
   end
 
   # EDIT

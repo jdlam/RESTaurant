@@ -14,7 +14,7 @@
     <% end %>
   </select>
   <select class="col s10 offset-s1 m4 offset-m4" name="party[table_id]">
-    <option value="" disables delection>Table Number?</option>
+    <option value="" disabled selection>Table Number?</option>
     <% tables = [1, 2, 3, 4, 5, 6, 7, 8, 9] %>
     <% tables.each do |table| %>
       <% if @party.table_id == table %>

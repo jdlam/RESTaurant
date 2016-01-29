@@ -1,4 +1,4 @@
-# RESTaurant
+# [RESTaurant](http://rest-aurant-pos.herokuapp.com/)
 
 Servers can add tables and add orders
 Admins can manage servers and menu items
